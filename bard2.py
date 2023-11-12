@@ -1,5 +1,12 @@
 import google.generativeai as palm
-palm.configure(api_key="AIzaSyDyA6RAQ46xpubDovHSCqvuZhhoXU8vSfw")
+import os
+import json
+
+PATH = os.path.dirname(os.path.realpath(__file__))
+with open(PATH + "/config.json") as f:
+    config = json.load(f)
+
+palm.configure(api_key=config["token"])
 
 defaults = {
   'model': 'models/text-bison-001',
